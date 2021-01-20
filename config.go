@@ -7,7 +7,8 @@ import (
 )
 
 type config struct {
-	Tables []string `yaml:"tables"`
+	Database string   `yaml:"database"`
+	Tables   []string `yaml:"tables"`
 }
 
 func readConfig(filepath string) (config, error) {

@@ -68,7 +68,7 @@ func main() {
 			log.Fatalf("%s %s", f, err)
 		}
 
-		err = writeTestSQL(f, sqls)
+		err = writeTestSQL(f, cnf.Database, sqls)
 		if err != nil {
 			log.Fatalf("%s %s", f, err)
 		}
@@ -156,12 +156,17 @@ func sortTestSQL(tables []string, sqls []string) ([]string, error) {
 }
 
 // SQLファイルにINSERT文を上書きする
-func writeTestSQL(path string, sqls []string) error {
+func writeTestSQL(path string, database string, sqls []string) error {
 	file, err := os.Create(path)
 	if err != nil {
 		return err
 	}
 	defer file.Close()
+
+	_, err = file.WriteString(fmt.Sprintf("USE %s;\n\n", database))
+	if err != nil {
+		return err
+	}
 
 	for _, s := range sqls {
 		_, err = file.WriteString(s + "\n")

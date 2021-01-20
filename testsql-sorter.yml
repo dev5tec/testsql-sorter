@@ -1,3 +1,4 @@
+database: database_1
 tables:
   - table_a
   - table_c
