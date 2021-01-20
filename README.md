@@ -12,7 +12,7 @@ go get -u github.com/dev5tec/testsql-sorter
 
 ## Usage
 
-1. testsql-sorter.yml にテーブルの順番を設定する
+1. testsql-sorter.yml に、データベース名とテーブルの順番を設定する
 2. 下記のコマンドを実行する
 
 ```bash
